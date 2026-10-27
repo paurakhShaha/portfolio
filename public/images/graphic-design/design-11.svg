@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="850" viewBox="0 0 700 850" fill="none">
+  <rect width="700" height="850" fill="#F7F4E9"/>
+  <rect x="24" y="24" width="652" height="802" stroke="#B9F35A" stroke-width="1.5" fill="none" opacity="0.35"/>
+  <rect x="48" y="48" width="604" height="754" fill="#B9F35A" opacity="0.08"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="Georgia, serif" font-size="58" fill="#171714" opacity="0.9">11</text>
+  <text x="50%" y="56%" text-anchor="middle" font-family="ui-monospace, monospace" font-size="17" fill="#A6A69C" letter-spacing="3">VISUAL STUDY · PLACEHOLDER</text>
+  <text x="50%" y="62%" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" fill="#A6A69C" letter-spacing="2">Replace with design-11.jpg</text>
+</svg>
