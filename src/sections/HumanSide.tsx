@@ -5,7 +5,7 @@ export default function HumanSide() {
     <section className="relative py-32 md:py-40 px-6 md:px-16 lg:px-24">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">
-          <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-muted mb-4">
+          <p className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-4">
             05 — The human side
           </p>
           <h2 className="font-display text-4xl md:text-5xl tracking-tighter leading-none">
@@ -16,7 +16,7 @@ export default function HumanSide() {
         </div>
         <div className="lg:col-span-7 space-y-10">
           <div>
-            <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-muted mb-3">
+            <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted mb-3">
               Currently interested in
             </p>
             <ul className="space-y-2">
@@ -28,7 +28,7 @@ export default function HumanSide() {
             </ul>
           </div>
           <div>
-            <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-muted mb-3">
+            <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted mb-3">
               Looking for
             </p>
             <ul className="space-y-2">

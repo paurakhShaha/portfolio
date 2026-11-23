@@ -38,7 +38,7 @@ export default function ChapterIndicator() {
       className="fixed right-5 top-1/2 -translate-y-1/2 z-[100] hidden md:flex flex-col items-center gap-2"
       aria-hidden="true"
     >
-      <span className="font-mono text-[10px] tracking-[0.2em] text-muted mb-1">CH</span>
+      <span className="font-mono text-[11px] tracking-[0.2em] text-muted mb-1">CH</span>
       <span className="font-display text-2xl tracking-tighter tabular-nums">{active}</span>
     </div>
   )

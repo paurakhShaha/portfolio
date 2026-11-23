@@ -66,10 +66,10 @@ export default function Hero({ reducedMotion }: Props) {
     >
       {/* Editorial labels */}
       <div className="absolute top-8 left-6 md:left-16 lg:left-24 flex items-center gap-4">
-        <span className="hero-label font-mono text-[10px] tracking-[0.22em] uppercase text-muted">
+        <span className="hero-label font-mono text-[11px] tracking-[0.22em] uppercase text-muted">
           An independent digital practice
         </span>
-        <span className="hero-issue font-mono text-[10px] tracking-[0.18em] text-muted">
+        <span className="hero-issue font-mono text-[11px] tracking-[0.18em] text-muted">
           ISSUE 01 / 2026
         </span>
       </div>
@@ -125,7 +125,7 @@ export default function Hero({ reducedMotion }: Props) {
       </div>
 
       {/* Decorative issue mark */}
-      <div className="absolute bottom-10 right-6 md:right-16 font-mono text-[10px] tracking-[0.2em] text-muted vertical-text hidden md:block">
+      <div className="absolute bottom-10 right-6 md:right-16 font-mono text-[11px] tracking-[0.2em] text-muted vertical-text hidden md:block">
         SCROLL TO ENTER
       </div>
     </section>

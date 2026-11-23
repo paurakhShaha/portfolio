@@ -8,7 +8,7 @@ export default function Closing() {
       className="relative min-h-[70vh] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-32"
     >
       <div className="max-w-6xl mx-auto w-full">
-        <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-muted mb-8">
+        <p className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-8">
           06 — The ending
         </p>
         <h2 className="font-display font-semibold text-[clamp(2.4rem,8vw,6rem)] leading-[0.95] tracking-tighter max-w-4xl">

@@ -75,7 +75,7 @@ function ProjectCard({ project }: { project: Project }) {
           <h3 className="reveal-title font-display text-4xl md:text-5xl tracking-tighter leading-none">
             {project.title}
           </h3>
-          <p className="reveal mt-3 font-mono text-[10px] tracking-[0.14em] uppercase text-muted">
+          <p className="reveal mt-3 font-mono text-[11px] tracking-[0.14em] uppercase text-muted">
             {project.category}
           </p>
 
@@ -83,7 +83,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project.technologies.map((t) => (
               <span
                 key={t}
-                className="px-2.5 py-1 font-mono text-[10px] tracking-wide border border-ink/15"
+                className="px-2.5 py-1 font-mono text-[11px] tracking-wide border border-ink/15"
               >
                 {t}
               </span>
@@ -137,20 +137,39 @@ function ProjectCard({ project }: { project: Project }) {
             ) : null}
             <div
               data-fallback
-              className="absolute inset-0 flex items-center justify-center"
+              className="absolute inset-0 flex-col justify-between p-8 md:p-12"
               style={{ display: project.coverImage ? 'none' : 'flex' }}
             >
-              <div className="text-center px-6">
-                <span
-                  className="font-display text-6xl md:text-8xl tracking-tighter opacity-25"
-                  style={{ color: project.accent }}
-                >
-                  {project.number}
-                </span>
-                <p className="mt-2 font-mono text-[11px] tracking-[0.15em] uppercase text-ink/40">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-4 -bottom-10 font-display text-[clamp(8rem,22vw,18rem)] leading-none tracking-tighter opacity-[0.12]"
+                style={{ color: project.accent }}
+              >
+                {project.number}
+              </span>
+              <div className="relative flex items-center justify-between font-mono text-[11px] tracking-[0.18em] uppercase text-ink/60">
+                <span>{project.category}</span>
+                <span>Spec sheet / {project.number}</span>
+              </div>
+              <div className="relative max-w-md">
+                <p className="font-display text-3xl md:text-5xl tracking-tighter text-ink mb-5">
                   {project.title}
                 </p>
+                <ul className="space-y-2">
+                  {project.features.slice(0, 4).map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-sm md:text-[15px] text-ink/75">
+                      <span
+                        className="mt-[0.55em] w-1.5 h-1.5 shrink-0"
+                        style={{ background: project.accent }}
+                      />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
               </div>
+              <p className="relative font-mono text-[11px] tracking-[0.14em] uppercase text-ink/70">
+                {project.technologies.slice(0, 4).join('  ·  ')}
+              </p>
             </div>
             <span className="absolute top-3 left-3 w-3 h-3 border-t border-l border-ink/20" />
             <span className="absolute top-3 right-3 w-3 h-3 border-t border-r border-ink/20" />
@@ -161,19 +180,19 @@ function ProjectCard({ project }: { project: Project }) {
           <p className="reveal font-serif text-lg md:text-xl leading-relaxed text-ink/80 mb-6">
             {project.shortDescription}
           </p>
-          <p className="reveal text-[15px] leading-relaxed text-ink/55 mb-8">
+          <p className="reveal text-[15px] leading-relaxed text-ink/70 mb-8">
             {project.description}
           </p>
 
           <div className="reveal grid sm:grid-cols-2 gap-8">
             <div>
-              <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-muted mb-3">
+              <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted mb-3">
                 Problem
               </p>
               <p className="text-sm leading-relaxed text-ink/65">{project.problem}</p>
             </div>
             <div>
-              <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-muted mb-3">
+              <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted mb-3">
                 Approach
               </p>
               <p className="text-sm leading-relaxed text-ink/65">{project.approach}</p>
@@ -220,13 +239,13 @@ export default function ProjectWorlds() {
   return (
     <section id="projects" className="relative">
       <div ref={headerRef} className="px-6 md:px-16 lg:px-24 pt-24 pb-8">
-        <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-muted mb-4">
+        <p className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-4">
           02 — Project Worlds
         </p>
         <h2 className="font-display text-4xl md:text-6xl tracking-tighter leading-none max-w-2xl">
           Every project is a world.
           <br />
-          <span className="text-ink/40">Every scroll opens a new one.</span>
+          <span className="text-ink/55">Every scroll opens a new one.</span>
         </h2>
       </div>
 

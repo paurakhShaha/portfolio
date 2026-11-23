@@ -9,7 +9,7 @@ export default {
         cobalt: '#246BFD',
         signal: '#FF7043',
         acid: '#B9F35A',
-        muted: '#A6A69C',
+        muted: '#6E6E66',
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],

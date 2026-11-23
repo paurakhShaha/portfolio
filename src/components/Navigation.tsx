@@ -37,7 +37,7 @@ export default function Navigation() {
     <>
       {/* Desktop rail */}
       <nav
-        className="fixed left-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-5"
+        className="group/nav fixed left-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-5"
         aria-label="Primary"
       >
         {links.map((l) => (
@@ -53,8 +53,8 @@ export default function Navigation() {
               }`}
             />
             <span
-              className={`font-mono text-[10px] tracking-[0.18em] transition-opacity ${
-                active === l.id ? 'opacity-100' : 'opacity-40 group-hover:opacity-80'
+              className={`font-mono text-[11px] tracking-[0.18em] bg-paper px-1.5 py-0.5 transition-opacity opacity-0 group-hover/nav:opacity-60 group-focus-visible:opacity-100 ${
+                active === l.id ? 'group-hover/nav:!opacity-100' : 'group-hover:!opacity-100'
               }`}
             >
               {l.label}

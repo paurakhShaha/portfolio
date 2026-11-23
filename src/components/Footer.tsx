@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
           <p className="font-display text-lg tracking-tight">{personal.name}</p>
-          <p className="font-mono text-[10px] tracking-[0.15em] text-muted mt-1">
+          <p className="font-mono text-[11px] tracking-[0.15em] text-muted mt-1">
             © {new Date().getFullYear()} — A WORLD IN PROGRESS
           </p>
         </div>

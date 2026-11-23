@@ -52,7 +52,7 @@ export default function Manifesto() {
       className="relative py-32 md:py-48 px-6 md:px-16 lg:px-24 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto">
-        <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-muted mb-16">
+        <p className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-16">
           01 — Manifesto
         </p>
 
@@ -72,7 +72,7 @@ export default function Manifesto() {
             I care about the moment when something stops being a prototype and starts feeling
             inevitable — when the interface, the system, and the idea click into place.
           </p>
-          <p className="text-[15px] leading-relaxed text-ink/55">
+          <p className="text-[15px] leading-relaxed text-ink/70">
             My work sits between product engineering and creative technology: browser extensions
             that behave like small worlds, agent pipelines that actually deliver, and full-stack
             tools that stay understandable under the hood.

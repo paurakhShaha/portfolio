@@ -22,7 +22,7 @@ export default function Toolkit() {
   return (
     <section id="toolkit" className="relative py-32 md:py-40 px-6 md:px-16 lg:px-24">
       <div className="max-w-6xl mx-auto">
-        <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-muted mb-4">
+        <p className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-4">
           03 — Toolkit
         </p>
         <h2 className="font-display text-4xl md:text-5xl tracking-tighter leading-none mb-16 max-w-xl">
@@ -33,7 +33,7 @@ export default function Toolkit() {
           <div className="lg:col-span-8 space-y-10">
             {categories.map((cat) => (
               <div key={cat.key}>
-                <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-muted mb-4">
+                <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted mb-4">
                   {cat.label}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -61,7 +61,7 @@ export default function Toolkit() {
 
           <div className="lg:col-span-4">
             <div className="sticky top-24 border border-ink/10 p-6 min-h-[200px]">
-              <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-muted mb-4">
+              <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted mb-4">
                 {active ? `Used in` : 'Hover a technology'}
               </p>
               {active && related.length === 0 && (
@@ -76,7 +76,7 @@ export default function Toolkit() {
                     >
                       {p.title}
                     </a>
-                    <p className="font-mono text-[10px] text-muted mt-0.5">{p.category}</p>
+                    <p className="font-mono text-[11px] text-muted mt-0.5">{p.category}</p>
                   </li>
                 ))}
               </ul>
