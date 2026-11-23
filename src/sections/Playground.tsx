@@ -776,6 +776,9 @@ export default function Playground() {
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect()
+      // A hidden or not-yet-laid-out canvas measures 0×0, and drawing a 0×0 floor throws.
+      // Keep the last good size; the ResizeObserver calls back once there is room.
+      if (rect.width < 1 || rect.height < 1) return
       // Re-stock the pond on first paint or when its size changes a lot (e.g. rotating a phone).
       const first = w === 0 || Math.abs(rect.width - w) / w > 0.25 || Math.abs(rect.height - h) / h > 0.25
       w = rect.width

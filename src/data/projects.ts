@@ -151,9 +151,8 @@ export const personal = {
     'Collaborations that mix code with design curiosity',
   ],
   github: 'https://github.com/paurakhShaha',
-  // Add verified LinkedIn / email when available
-  email: '',
-  linkedin: '',
+  email: 'shahpaurakh81@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/paurakh-shah',
 }
 
 export const skills = {

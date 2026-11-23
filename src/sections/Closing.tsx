@@ -1,5 +1,5 @@
 import { personal } from '../data/projects'
-import { Github } from 'lucide-react'
+import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react'
 
 export default function Closing() {
   return (
@@ -21,25 +21,44 @@ export default function Closing() {
           Let’s talk.
         </p>
 
-        <div className="mt-12 flex flex-wrap gap-4">
+        <a
+          href={`mailto:${personal.email}`}
+          className="group mt-12 inline-flex items-center gap-3 font-display text-[clamp(1.4rem,4.2vw,3rem)] tracking-tight break-all border-b-2 border-ink/15 hover:border-cobalt hover:text-cobalt transition-colors pb-1"
+          data-cursor="WRITE"
+        >
+          {personal.email}
+          <ArrowUpRight
+            className="shrink-0 w-[0.8em] h-[0.8em] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+            aria-hidden="true"
+          />
+        </a>
+
+        <div className="mt-10 flex flex-wrap gap-4">
+          <a
+            href={`mailto:${personal.email}`}
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-ink text-paper font-mono text-[11px] tracking-[0.16em] uppercase hover:bg-cobalt transition-colors"
+            data-cursor="WRITE"
+          >
+            <Mail size={15} /> Email me
+          </a>
+          <a
+            href={personal.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border border-ink/25 font-mono text-[11px] tracking-[0.16em] uppercase hover:border-ink transition-colors"
+            data-cursor="OPEN"
+          >
+            <Linkedin size={15} /> LinkedIn
+          </a>
           <a
             href={personal.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-ink text-paper font-mono text-[11px] tracking-[0.16em] uppercase hover:bg-cobalt transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border border-ink/25 font-mono text-[11px] tracking-[0.16em] uppercase hover:border-ink transition-colors"
             data-cursor="OPEN"
           >
-            <Github size={15} /> Start a conversation
+            <Github size={15} /> GitHub
           </a>
-          {personal.email && (
-            <a
-              href={`mailto:${personal.email}`}
-              className="inline-flex items-center gap-2 px-7 py-3.5 border border-ink/25 font-mono text-[11px] tracking-[0.16em] uppercase hover:border-ink transition-colors"
-              data-cursor="WRITE"
-            >
-              Email
-            </a>
-          )}
         </div>
       </div>
     </section>

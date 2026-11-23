@@ -1,6 +1,6 @@
 import { personal } from '../data/projects'
 
-export default function Footer() {
+export default function Footer({ onTop }: { onTop: () => void }) {
   return (
     <footer className="border-t border-ink/10 py-10 px-6 md:px-12">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -26,12 +26,13 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-cobalt transition-colors"
+              data-cursor="OPEN"
             >
               LinkedIn
             </a>
           )}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={onTop}
             className="hover:text-cobalt transition-colors"
             data-cursor="TOP"
           >

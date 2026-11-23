@@ -15,6 +15,8 @@ import Playground from './sections/Playground'
 import HumanSide from './sections/HumanSide'
 import Closing from './sections/Closing'
 import Footer from './components/Footer'
+import BackToTop from './components/BackToTop'
+import { applyScrollGuard } from './lib/scrollGuard'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -37,6 +39,19 @@ function App() {
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      // Sections may shorten or drop a wheel step (see lib/scrollGuard).
+      virtualScroll: (data) => {
+        const next = applyScrollGuard(data.deltaY, lenis.targetScroll)
+        if (next === data.deltaY) return true
+        if (next === 0) {
+          // Returning false alone would let the browser scroll natively.
+          if (data.event.cancelable) data.event.preventDefault()
+          return false
+        }
+        // Lenis reads deltaY from this object after the callback.
+        data.deltaY = next
+        return true
+      },
     })
     lenisRef.current = lenis
 
@@ -53,6 +68,12 @@ function App() {
       lenisRef.current = null
     }
   }, [reducedMotion])
+
+  // Go through Lenis when it is running so the trip up is eased like normal scrolling.
+  const scrollToTop = () => {
+    if (lenisRef.current) lenisRef.current.scrollTo(0, { duration: 1.6 })
+    else window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' })
+  }
 
   useEffect(() => {
     const t = setTimeout(() => ScrollTrigger.refresh(), 400)
@@ -76,7 +97,8 @@ function App() {
         <HumanSide />
         <Closing />
       </main>
-      <Footer />
+      <Footer onTop={scrollToTop} />
+      <BackToTop onTop={scrollToTop} />
     </>
   )
 }

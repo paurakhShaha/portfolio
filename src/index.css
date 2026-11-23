@@ -17,6 +17,13 @@
 
 html {
   scroll-behavior: auto;
+  /* Hide the page scrollbar (the top progress bar shows position instead). */
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -109,4 +116,18 @@ body {
 .vertical-text {
   writing-mode: vertical-rl;
   text-orientation: mixed;
+}
+
+/* Pinned project story (StoryScroll): keep fixed UI readable on the dark stage */
+.story-adapt {
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+/* The story stage has its own chapter counter */
+.story-dark .story-hide {
+  opacity: 0;
+}
+.story-dark .story-adapt,
+.story-dark .cursor-dot,
+.story-dark .cursor-label {
+  filter: invert(1);
 }

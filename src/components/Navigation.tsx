@@ -37,7 +37,7 @@ export default function Navigation() {
     <>
       {/* Desktop rail */}
       <nav
-        className="group/nav fixed left-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-5"
+        className="story-adapt group/nav fixed left-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-5"
         aria-label="Primary"
       >
         {links.map((l) => (

@@ -29,7 +29,7 @@ export default function ScrollProgress() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 h-[2px] z-[9990] origin-left"
+      className="story-adapt fixed top-0 left-0 right-0 h-[2px] z-[9990] origin-left"
       style={{ background: 'rgba(23,23,20,0.08)' }}
       aria-hidden="true"
     >

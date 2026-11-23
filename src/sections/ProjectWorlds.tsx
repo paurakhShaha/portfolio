@@ -1,7 +1,28 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ExternalLink, Github } from 'lucide-react'
 import { projects, type Project } from '../data/projects'
+import StoryScroll from '../components/StoryScroll'
+
+/** The pinned story needs room and motion; everything else gets the card list. */
+const STORY_QUERY = '(min-width: 1024px) and (min-height: 600px) and (prefers-reduced-motion: no-preference)'
+
+function useStoryMode() {
+  const [on, setOn] = useState(() => window.matchMedia(STORY_QUERY).matches)
+  useEffect(() => {
+    const mq = window.matchMedia(STORY_QUERY)
+    const handler = (e: MediaQueryListEvent) => setOn(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  // Section height changes a lot between modes; re-measure everything below.
+  useEffect(() => {
+    const t = setTimeout(() => ScrollTrigger.refresh(), 50)
+    return () => clearTimeout(t)
+  }, [on])
+  return on
+}
 
 function ProjectCard({ project }: { project: Project }) {
   const cardRef = useRef<HTMLElement>(null)
@@ -218,6 +239,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function ProjectWorlds() {
   const headerRef = useRef<HTMLDivElement>(null)
+  const storyMode = useStoryMode()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -238,7 +260,7 @@ export default function ProjectWorlds() {
 
   return (
     <section id="projects" className="relative">
-      <div ref={headerRef} className="px-6 md:px-16 lg:px-24 pt-24 pb-8">
+      <div ref={headerRef} className="px-6 md:px-16 lg:px-24 pt-24 pb-8 lg:pb-16">
         <p className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-4">
           02 — Project Worlds
         </p>
@@ -249,11 +271,15 @@ export default function ProjectWorlds() {
         </h2>
       </div>
 
-      <div className="px-6 md:px-16 lg:px-24">
-        {projects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
-        ))}
-      </div>
+      {storyMode ? (
+        <StoryScroll />
+      ) : (
+        <div className="px-6 md:px-16 lg:px-24">
+          {projects.map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
+        </div>
+      )}
     </section>
   )
 }
