@@ -13,7 +13,7 @@
   "routes": [{ "pattern": "paurakhshah.com.np", "custom_domain": true }],
   "vars": {
     // URL of the deployed Express API (Render/Railway/Fly), no trailing slash.
-    "API_ORIGIN": ""
+    "API_ORIGIN": "https://portfolio-4u4q.onrender.com"
   }
   // PROXY_SECRET is a secret: npx wrangler secret put PROXY_SECRET
 }

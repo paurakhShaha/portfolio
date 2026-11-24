@@ -53,6 +53,14 @@ test('worker serves assets, robots.txt, and proxies the API paths', async () => 
     await worker.fetch(new Request(`${site}/sitemap.xml`), env)
     assert.equal(seen[2].url, '/sitemap.xml')
 
+    // The publishing API's bearer token reaches the API unchanged.
+    await worker.fetch(
+      new Request(`${site}/api/publish/posts/x`, { method: 'PUT', headers: { Authorization: 'Bearer tok' }, body: '{}' }),
+      env
+    )
+    assert.equal(seen[3].url, '/api/publish/posts/x')
+    assert.equal(seen[3].headers.authorization, 'Bearer tok')
+
     const unconfigured = await worker.fetch(new Request(`${site}/blog`), { ...env, API_ORIGIN: '' })
     assert.equal(unconfigured.status, 503)
   } finally {

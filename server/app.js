@@ -1,16 +1,12 @@
-import { timingSafeEqual } from 'node:crypto'
 import express from 'express'
 import mongoose from 'mongoose'
 import { config } from './config.js'
 import { authRouter } from './auth.js'
 import { adminRouter } from './admin.js'
 import { blogRouter } from './blog.js'
+import { publishRouter } from './publish.js'
+import { sameSecret } from './lib/secret.js'
 import { messagePage } from './views.js'
-
-const sameSecret = (a, b) => {
-  const x = Buffer.from(String(a)), y = Buffer.from(String(b))
-  return x.length === y.length && timingSafeEqual(x, y)
-}
 
 export function createApp() {
   const app = express()
@@ -39,6 +35,7 @@ export function createApp() {
   })
   app.use('/api/auth', authRouter)
   app.use('/api/admin', adminRouter)
+  app.use('/api/publish', publishRouter)
   app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found' }))
   app.use(blogRouter)
 

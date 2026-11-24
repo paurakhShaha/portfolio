@@ -13,7 +13,7 @@ adminRouter.use(requireAdmin)
 const str = (v) => (typeof v === 'string' ? v : '')
 
 /** Whitelist the editable fields that are present in the body (so a partial PUT only touches those). */
-function pickPost(body = {}) {
+export function pickPost(body = {}) {
   const data = {}
   for (const key of ['title', 'excerpt', 'category']) if (key in body) data[key] = str(body[key])
   if ('content' in body) data.content = cleanHtml(str(body.content))

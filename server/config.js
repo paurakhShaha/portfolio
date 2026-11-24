@@ -10,6 +10,8 @@ export const config = {
   author: process.env.BLOG_AUTHOR || 'Paurakh Shah',
   /** When set, every request must carry it in X-Proxy-Secret (sent by the static host's proxy). */
   proxySecret: process.env.PROXY_SECRET || '',
+  /** Bearer token for /api/publish (scripted publishing). Empty = that API is off. */
+  publishToken: process.env.BLOG_API_TOKEN || '',
   trustProxy: Number(process.env.TRUST_PROXY ?? 1),
   cloudinary: {
     cloudName: process.env.CLOUDINARY_CLOUD_NAME || '',
@@ -24,4 +26,5 @@ export function checkConfig() {
   if (isProd && !process.env.SITE_URL) missing.push('SITE_URL')
   if (missing.length) throw new Error(`Missing environment variables: ${missing.join(', ')}`)
   if (config.jwtSecret.length < 32) throw new Error('JWT_SECRET must be at least 32 characters')
+  if (config.publishToken && config.publishToken.length < 32) throw new Error('BLOG_API_TOKEN must be at least 32 characters')
 }
