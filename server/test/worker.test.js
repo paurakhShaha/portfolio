@@ -29,6 +29,13 @@ test('worker serves assets, robots.txt, and proxies the API paths', async () => 
     assert.equal(await (await worker.fetch(new Request(`${site}/admin/`), env)).text(), 'from-assets')
     assert.equal(await (await worker.fetch(new Request(`${site}/blogroll`), env)).text(), 'from-assets')
 
+    // Verification files are fetched without .html so the asset handler can't redirect them.
+    const assetPaths = []
+    const assetEnv = { ...env, ASSETS: { fetch: (r) => (assetPaths.push(new URL(r.url).pathname), new Response('ok')) } }
+    await worker.fetch(new Request(`${site}/google712ef48f64f7767a.html`), assetEnv)
+    await worker.fetch(new Request(`${site}/googleish.html`), assetEnv)
+    assert.deepEqual(assetPaths, ['/google712ef48f64f7767a', '/googleish.html'])
+
     const page = await worker.fetch(
       new Request(`${site}/blog?q=koi&category=Code`, { headers: { 'CF-Connecting-IP': '203.0.113.7' } }),
       env

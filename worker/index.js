@@ -16,6 +16,11 @@ export default {
         { headers: { 'Content-Type': 'text/plain; charset=utf-8' } }
       )
     }
+    // Search Console's file check wants a 200 at the exact .html path, but the asset handler
+    // redirects /x.html to /x. Serve the file at /x without that redirect.
+    if (/^\/google[0-9a-f]+\.html$/.test(url.pathname)) {
+      return env.ASSETS.fetch(new Request(new URL(url.pathname.slice(0, -5), url), request))
+    }
     if (!PROXIED.test(url.pathname)) return env.ASSETS.fetch(request)
     if (!env.API_ORIGIN) return new Response('Blog API is not configured', { status: 503 })
 
