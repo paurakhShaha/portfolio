@@ -1,0 +1,10 @@
+@import '../prose.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ProseMirror {
+  min-height: 24rem;
+  outline: none;
+}

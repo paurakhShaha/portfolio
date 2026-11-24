@@ -53,3 +53,8 @@ npm run build    # production build → dist/
 npm run preview  # preview production build
 ```
 
+
+## Blog + CMS
+
+`/blog` (server-rendered, SEO-ready) and a private CMS at `/admin/` run on a small Express +
+MongoDB server in `server/`. Setup, environment variables and deployment: [docs/BLOG.md](docs/BLOG.md).

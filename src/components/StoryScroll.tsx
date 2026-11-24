@@ -36,6 +36,14 @@ const RAIL_Y = 90
 
 const pad = (i: number) => String(i).padStart(2, '0')
 
+/**
+ * Font size for the big word on a chapter's wash. Short words get the full
+ * 18vw; longer ones (REALTIME, AUTONOMOUS) shrink so the word spans at most
+ * ~84% of the stage. Display bold caps average ~0.64em per letter.
+ */
+const washKeywordSize = (word: string) =>
+  `clamp(4rem, min(18vw, ${(84 / (word.length * 0.64)).toFixed(2)}vw), 18rem)`
+
 function SplitChars({ text, className = '' }: { text: string; className?: string }) {
   const words = text.split(' ')
   return (
@@ -564,9 +572,12 @@ export default function StoryScroll() {
                 Chapter {pad(i + 1)} — {c.project.title}
               </span>
             </span>
-            <span className="overflow-hidden">
-              <span className="story-wash-line block font-display font-bold text-[clamp(6rem,18vw,18rem)] leading-[0.9] tracking-tighter">
-                {c.keyword.length > 7 ? pad(i + 1) : c.keyword}
+            <span className="overflow-hidden max-w-full">
+              <span
+                className="story-wash-line block whitespace-nowrap font-display font-bold leading-[0.9] tracking-tighter"
+                style={{ fontSize: washKeywordSize(c.keyword) }}
+              >
+                {c.keyword}
               </span>
             </span>
           </div>

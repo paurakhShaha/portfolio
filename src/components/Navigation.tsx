@@ -61,6 +61,13 @@ export default function Navigation() {
             </span>
           </button>
         ))}
+        {/* A page, not a section: kept out of `links`, which drives the scroll observer. */}
+        <a href="/blog" className="group flex items-center gap-3" data-cursor="GO">
+          <span className="w-1.5 h-1.5 rounded-full bg-muted group-hover:bg-ink transition-all" />
+          <span className="font-mono text-[11px] tracking-[0.18em] bg-paper px-1.5 py-0.5 transition-opacity opacity-0 group-hover/nav:opacity-60 group-hover:!opacity-100 group-focus-visible:opacity-100">
+            BLOG
+          </span>
+        </a>
       </nav>
 
       {/* Mobile toggle */}
@@ -83,6 +90,9 @@ export default function Navigation() {
               {l.label}
             </button>
           ))}
+          <a href="/blog" className="font-display text-3xl tracking-tight">
+            BLOG
+          </a>
         </div>
       )}
     </>
