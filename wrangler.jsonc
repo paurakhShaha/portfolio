@@ -10,6 +10,8 @@
     // Only these paths run the Worker; everything else is a plain static file.
     "run_worker_first": ["/api/*", "/blog", "/blog/*", "/sitemap.xml", "/robots.txt", "/google*"]
   },
+  // Pings the API every 10 minutes so Render's free plan never puts it to sleep (worker/index.js `scheduled`).
+  "triggers": { "crons": ["*/10 * * * *"] },
   "routes": [{ "pattern": "paurakhshah.com.np", "custom_domain": true }],
   "vars": {
     // URL of the deployed Express API (Render/Railway/Fly), no trailing slash.

@@ -37,4 +37,12 @@ export default {
       redirect: 'manual',
     })
   },
+
+  // Cron (wrangler.jsonc `triggers.crons`): Render's free plan sleeps after ~15 idle minutes and
+  // answers 502 while it wakes. Any request resets that timer; this one is refused at the
+  // proxy-secret check (403) before touching the database.
+  async scheduled(_event, env, ctx) {
+    if (!env.API_ORIGIN) return
+    ctx.waitUntil(fetch(new URL('/api/ping', env.API_ORIGIN)).catch(() => {}))
+  },
 }

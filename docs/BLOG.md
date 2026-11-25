@@ -135,6 +135,12 @@ npm run dev       # Vite on :5173, proxies /blog, /api, /sitemap.xml, /robots.tx
 `/blog/*`, `/sitemap.xml` and `/robots.txt`; every other request is a plain static file.
 Check a config change without deploying: `npx wrangler deploy --dry-run`.
 
+Keep-awake: Render's free plan puts the API to sleep after ~15 idle minutes, and the first
+request then gets Render's "502 Bad Gateway" while it boots. A cron trigger
+(`triggers.crons`, every 10 minutes) runs the Worker's `scheduled` handler, which requests
+`API_ORIGIN/api/ping` so the API never goes idle. That one service uses ~744 of the 750 free
+instance hours a month. Remove the trigger if the API moves to a paid instance.
+
 ### After the first deploy
 
 - Open `https://<site>/robots.txt` and `/sitemap.xml` and check they show your domain.

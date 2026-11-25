@@ -70,6 +70,14 @@ test('worker serves assets, robots.txt, and proxies the API paths', async () => 
 
     const unconfigured = await worker.fetch(new Request(`${site}/blog`), { ...env, API_ORIGIN: '' })
     assert.equal(unconfigured.status, 503)
+
+    // The keep-awake cron pings the API once, without the proxy secret.
+    const pending = []
+    await worker.scheduled({}, env, { waitUntil: (p) => pending.push(p) })
+    await Promise.all(pending)
+    assert.equal(seen[4].url, '/api/ping')
+    assert.equal(seen[4].headers['x-proxy-secret'], undefined)
+    await worker.scheduled({}, { ...env, API_ORIGIN: '' }, { waitUntil: () => assert.fail('no ping without an API') })
   } finally {
     api.close()
   }
